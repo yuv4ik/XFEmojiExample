@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vms="clr-namespace:XFEmojiExample.ViewModels"
+    xmlns:local="clr-namespace:XFEmojiExample"
+    x:Class="XFEmojiExample.XFEmojiExamplePage">
+    <ContentPage.BindingContext>
+        <vms:XFEmojiExampleViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Dec -->
+            <!--<x:String x:Key="emojiManJuggling">&#129337;&#8205;&#9794;&#65039;</x:String>-->
+            <!-- Hex -->
+            <x:String x:Key="emojiManJuggling">&#x1F939;&#x200D;&#x2642;&#xFE0F;</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Label HorizontalTextAlignment="Center" Text="{Binding LblValue}" WidthRequest="300" />
+        <StackLayout
+            HorizontalOptions="Center"
+            Grid.Row="2"
+            Orientation="Horizontal">
+            <Label Text="Defined in XAML:" />
+            <Label Text="{StaticResource emojiManJuggling}" />
+        </StackLayout>
+
+        <StackLayout
+            Grid.Row="1">
+            <Button Text="{Binding BikingBtnLbl}" Command="{Binding ChangeLblCmd}" CommandParameter="biking" />
+            <Button Text="{Binding HelloBtnLbl}" Command="{Binding ChangeLblCmd}" CommandParameter="hello" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
